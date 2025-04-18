@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#c118f5"><!--Pour changer la couleur du thème par défaut des navigateurs(en noir) en couleur approprié à mon site(en violet); NB: on peut le voir que sur mobile-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"><!--Pour que le site soit compatible dans divers navigateurs-->
+    <title>Turbo Typing</title><!--Titre du site-->
+    <link rel="icon" href="img/logo TurboTyping.png">
+    <link rel="stylesheet" href="typingTest.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" defer/><!------lien pour faire fonctionner et afficher les icônes pour fontawesome------>
+</head>
+
+<body>
+    <header id="nav-header" class="nav-header"><!--Balise qui renferme tout le contenu de la barre de navigation horizontale-->
+        <div class="logo-turbotyping"><!--ici, pour le logo et le nom du site situer à gauche-->
+            <img src="img/logo TurboTyping.png" alt="logo" class="logo-turbotyping"><!--logo du site-->
+            <h5>TurboTyping</h5><!--nom du site-->
+        </div>
+        <div class="nav-link"><!--ici, pour les quatres navigations situer au centre dans une même ligne-->
+            <div class="nav-link-child">
+                <a href="#home" class="link active">Home</a>
+                <a href="#about" class="link">About</a>
+                <a href="#typing-test" class="link">Game</a>
+                <a href="#contact" class="link">Contact</a>
+            </div>
+        </div>
+        <button class="btn-signin">Sign In <!--ici, pour le bouton "sign in" situer à droite-->
+            <span id="icon-signin">
+              <i class="fa-solid fa-chevron-right"></i><!--icône-->
+            </span>
+        </button>
+    </header>
+
+    <!-- ============================================Ancre pour la page Home============================================= -->
+    <span id="home" class="page-anchor"></span>
+
+    <!--Page Home-->
+    <main id="home-page" class="home-page">
+        <section class="welcome">
+            <h1>Welcome to <br>
+                <span class="brand-name" id="brand-name" >TurboTyping</span>
+            </h1>
+            <p class="description">Discover our game of typing test with different difficulty levels and language, track your progress and improve
+                your typing skills.
+            </p>
+            <div class="buttons"><!--balise pour séparer le bouton "Login" avec celui du bouton "Start Typing" dans une même ligne-->
+                <button class="login-btn" id="login-btn" onclick="login()"> <!--ici, pour le bouton "Login" seulement-->
+                    <span id="login" class="icon">Login
+                        <i class="fa-solid fa-share" id="icon-login"></i><!--icône-->
+                    </span>
+                </button>
+                <a href="#typing-test" class="start-btn"><!--ici, pour le bouton "Start Typing" seulement-->
+                    <span class="icon">Start Typing
+                        <i class="fa-solid fa-chevron-down"></i><!--icône-->
+                    </span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============================================Ancre pour la page About============================================ -->
+    <span id="about" class="page-anchor"></span>
+
+    <!--Page About-->
+    <main id="about-page" class="about-page">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="img/ordi-about.png" alt="computer">
+            </div>
+            <div class="about-content">
+                <h2>About TurboTyping</h2>
+                <p>TurboTyping is a modern typing test application designed to help you improve your typing speed and accuracy. Our platform offers different difficulty levels to challenge both beginners and advanced typists.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================Ancre pour la page Typing Test============================================ -->
+    <span id="typing-test" class="page-anchor"></span>
+
+    <!--Page Typing Test-->
+    <main id="typing-test-page" class="typing-test-page">
+        <h1>Typing Test</h1>
+        <div class="container-typing-test">
+            <div class="container-child"><!--ici, pour les balises select-->
+                <button id="show-stats"><!--bouton pour afficher les résultats-->
+                    <i class="fa-solid fa-eye"></i><!--icône-->
+                </button>
+                <div class="container-child-mode">
+                    <label for="mode">Select Mode:</label>
+                    <select id="mode"><!--Sélection des modes-->
+                        <option value="easy" class="option">Easy</option>
+                        <option value="medium" class="option">Medium</option>
+                        <option value="hard" class="option">Hard</option>
+                    </select>
+                </div>
+                <div class="container-child-language">
+                    <label for="language">Select Language:</label>
+                    <select id="language"><!--Sélection des langages-->
+                        <option value="english" class="option">English</option>
+                        <option value="malagasy" class="option">Malagasy</option>
+                        <option value="french" class="option">French</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="time">Finish time : <!--ici, pour referer le chrono de finition-->
+                <span id="timer">70</span>
+            </div>
+                
+            <div id="word-display" class="word-display"></div>
+            <input id="input-field" type="text" placeholder="Start typing..." autofocus>
+            <p id="results">Results : </p>
+        </div>
+    </main>
+
+    <div id="stats-card" class="stats-card"><!--affichage des statistiques dans une card pour les résultats du test-->
+        <div class="stats-content">
+            <h2>Test Completed!</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-value" id="final-wpm">0</span>
+                    <span class="stat-label">WPM</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="final-accuracy">0%</span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="mistakes">0</span>
+                    <span class="stat-label">Mistakes</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="time-left">0s</span>
+                    <span class="stat-label">Time Left</span>
+                </div>
+            </div>
+            <button id="restart-btn">
+                <i class="fa-solid fa-rotate-right"></i>
+            </button>
+        </div>
+    </div>
+
+<!-- ============================================ Ancre pour la page Contact ============================================= -->
+<span id="contact" class="page-anchor"></span>
+
+<!--Page Contact-->
+<footer  id="contact-page" class="contat-page">
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3>About</h3>
+            <ul>
+                <li>FAQ</li>
+            </ul>
+            
+        </div>
+        
+        <div class="footer-section">
+            <h3>COOKIE POLICE</h3>
+            <ul>
+                <li>Conditions d'utilisation</li>
+                <li>Politique de confidentialité</li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>CONTACT</h3>
+            <ul class="link-icon">
+                <li><i class="fa-brands fa-facebook"></i></li>
+                <li><i class="fa-brands fa-discord"></i></li>
+                <li><i class="fa-brands fa-linkedin"></i></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>© 2025 TurboTyping Inc. All rights reserved.</p>
+        <p>Join thousands of users who have improved their typing skills with TurboTyping!</p>
+    </div>
+</footer>
+
+    <script src="typingTest.js"></script>
+</html>
