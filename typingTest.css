@@ -1,0 +1,789 @@
+html::-webkit-scrollbar {/*--Pour cacher la barre de défilement situant à droite du site--*/
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.page-anchor {/*--ligne de séparation pour préciser la partie de chaque page du site(par un clique, par un défilement)--*/
+  display: block;
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+:root { /*--Gestion de couleur--*/
+  --primary: #977970;
+  --secondary: #c118f5;
+  --thirdly: #e71fee;
+  --accent: #11121b;
+  --accent-1: #beabac;
+  --accent-2: #2b2727;
+  --accent-3: #1c1e2e;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--accent-2);
+  font-family: sans-serif;
+}
+
+/*---------------début de la balise <header>--------------*/
+.nav-header {
+  position: sticky;
+  top: 3%;
+  z-index: 5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 30px;
+  margin-left: 30px;
+  margin-right: 30px;
+  justify-content: space-between;
+  background-color: var(--accent-3);
+  box-shadow: 0px 0px 10px 0px rgba(22, 22, 22, 0.158);
+}
+  
+.nav-header.scrolled {/*--ici, j'ai ajouté .scrolled sur tous les class de la balise header, pour q'une animation aura lieu quand je scroll pour aller vers le bas--*/
+  position: sticky;
+  top: 0;
+  padding-left: 40px;
+  padding-right: 20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  transition: .5s;
+  border-radius: 0px;
+  background-color: var(--accent-3);
+}
+
+.nav-header.scrolled .logo-turbotyping h5 {
+  color: var(--primary);
+  padding-left: 10px;
+  margin-top: -10px;
+  font-size: 24px;
+}
+
+.nav-header.scrolled .nav-link {
+  margin-left: 20px;
+  margin-top: 2px;
+}
+
+.nav-header.scrolled .btn-signin {
+  background-color: #4b274b;
+  color: #f1e3e3;
+  margin-right: 30px;
+  padding-top: 18px;
+  padding-left: 20px;
+}
+
+.nav-header.scrolled .btn-signin:hover {
+  background-color: #00000015;
+  color: #f1e3e3;
+}
+
+.nav-header.scrolled .btn-signin:active {
+  transform: scale(.9);
+  transition: .8s;
+}
+
+.logo-turbotyping {/*--class pour le logo et le nom du site--*/
+  zoom: 39%;
+  margin-top: -25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-turbotyping img {/*--class pour le logo seulement--*/
+  zoom: 1%;
+  aspect-ratio: 4 / 4;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-turbotyping h5 {/*--class pour le nom du site seulement--*/
+  position: relative;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 600;
+  font-size: 24px;
+  margin-top: -10px;
+  color: var(--primary);
+}
+
+.nav-link {
+  height: 60px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.nav-link-child {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-link .link {
+  zoom: 120%;
+  margin-top: 5px;
+  padding-top: 20px;
+  padding-bottom: 24px;
+  padding-left: 35px;
+  padding-right: 35px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+  color: #f1e3e3;
+}
+
+.nav-link .link:hover {
+  transition: .2s;
+  color: var(--thirdly);
+}
+
+.nav-link .link.active {
+  color: var(--thirdly);
+  margin-top: -5px;
+  padding-bottom: 32px;
+  border-bottom: 4px solid var(--thirdly);
+}
+
+.btn-signin {/*--class pour le bouton sign in--*/
+  zoom: 90%;
+  position: relative;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  gap: .5rem;
+  background-color: #4b274b;
+  color: #f1e3e3;
+  padding-top: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 22px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-signin:hover {
+  background-color: #00000015;
+  padding-top: 15px;
+  padding-left: 20px;
+  font-size: 22px;
+  border-radius: 15px;
+  color: #f1e3e3;
+  box-shadow: 0px 0px 10px 0px rgba(167, 166, 166, 0.322);
+}
+
+.btn-signin:active {/*--class pour l'effet de clique sur le bouton sign in--*/
+  transform: scale(0.9);
+  transition: 0.8s;
+}
+
+#icon-signin {
+  font-size: 20px;
+  margin-top: 2px;
+  margin-left: 10px;
+}
+
+#icon-signin.active {
+  transform: translate(-13px, 0px);
+  filter: blur(1px);
+  opacity: 0;
+  animation: left-to-right 1.5s linear 1 forwards;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes left-to-right {/*--animation du bouton sign in(=>mouseenter)--*/
+  to {
+    transform: translate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+#icon-signin.inactive {
+  transform: translate(0);
+  filter: blur(0);
+  opacity: 0;
+  animation: not-left-to-right 0s linear 1 forwards;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes not-left-to-right {/*--animation du bouton sign in(=>mouseleave)--*/
+  to {
+    transform: translate(0);
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+/*---------------fin de la balise <header>--------------*/
+
+
+/*-------------------Colonne pour le corps du site(main)-----------------*/
+.home-page, .about-page, .typing-test-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/*----------------------partie pour la page Home----------------------*/
+.home-page {
+  background: var(--accent);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  flex-direction: column;
+  text-align: center;
+  width: 97.5%;
+  margin-left: 17px;
+  margin-top: -70px;
+  padding-top: 70px;
+}
+
+.welcome {/*--text welcome to--*/
+  max-width: 800px;
+  padding: 40px;
+}
+
+.welcome h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+.brand-name {/*--Text TurboTyping--*/
+  background: linear-gradient(to top, rgba(26, 26, 26, 0.719) 0%, rgb(247, 27, 247) 60%);
+  background-clip: text;
+  color: transparent;
+  font-weight: 800;
+  font-size: 6rem;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 5px solid #333;
+  animation: typing 1s;
+}
+
+@keyframes typing {
+  from {
+      width: 10%;
+  }
+  to {
+      width: 100%;
+  }
+}
+
+.brand-name:hover {
+  -webkit-text-stroke: 3px var(--thirdly);
+  color: transparent;
+  background: transparent;
+}
+
+.description {/*--text pour la description du site--*/
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  color: var(--accent-1);
+  opacity: .5;
+}
+
+.buttons {/*--class pour l'ensemble des boutons "Login" et "Start Typing" dans la page Home--*/
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.login-btn {/*--bouton login--*/
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: transparent;
+  color: #fff;
+  border: 1px solid #f1e3e39a;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 0px 10px 0px rgba(167, 166, 166, 0.322);
+}
+
+.login-btn:active {/*--class pour l'effet de clique sur le bouton login--*/
+  transform: scale(0.9);
+  transition: 0.8s;
+}
+
+.start-btn {/*--bouton start typing--*/
+  text-decoration: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border: none;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #4b274b;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.start-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 0px 10px 0px rgba(167, 166, 166, 0.322);
+}
+
+.start-btn:active {/*--class pour l'effet de clique sur le bouton start typing--*/
+  transform: scale(0.9);
+  transition: 0.8s;
+}
+
+.icon {/*--class pour l'ensemble des icônes dans la page Home--*/
+  font-size: 1.2rem;
+}
+
+/*----------------------partie pour la page About----------------------*/
+.about-page {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 120px;
+  margin-top: 60px;
+}
+
+.about-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #4b274b, #2f1930, #e71fee, #c118f5);
+  background-size: 300% 300%;
+  z-index: -1;
+  animation: gradient 5s ease infinite;
+  filter: blur(10px);
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.about-container {
+  display: flex;
+  margin-top: 40px;
+  max-width: 1200px;
+  width: 100%;
+  background-color: var(--accent);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(173, 173, 173, 0.1);
+  overflow: hidden;
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin-left: 25px;
+}
+
+.about-content {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-content h2 {
+  font-size: 2.5rem;
+  color: var(--thirdly);
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-content h3 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 25px 0 15px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.about-content ul {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.about-content li {
+  margin-bottom: 10px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/*----------------------partie pour la page Typing Test----------------------*/
+.typing-test-page {
+  background-color: var(--accent);
+  flex-direction: column;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  color: #f1e3e3;
+}
+.container-typing-test {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 140px;
+  margin-right: 140px;
+  background-color: #151825;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px 0px rgba(167, 166, 166, 0.322);
+}
+
+.container-child {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 2rem;
+  margin-top: 5px;
+  margin-bottom: 40px;
+  margin-right: 5px;
+}
+
+#word-display {
+  margin-left: 90px;
+  margin-right: 90px;
+  margin-bottom: 20px;
+  text-align: justify;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 24px;
+  min-height: 60px;
+  background: #605c6394;
+  padding: 25px 50px;
+  border-style: dashed;
+  border: 2px dashed #000;
+  color: #00000083;
+}
+
+#mode, #language{
+  zoom: 140%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-right: 30px;
+  padding-left: 2px;
+  margin-left: 2px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid #53525269;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.option {
+  background-color: #baa8be;
+  color: #000;
+}
+
+#input-field {
+  padding: 10px;
+  font-size: 18px;
+  width: 50%;
+  max-width: 400px;
+  border-radius: 2px;
+  background: #d3c5d3ef;
+  border: 1px solid #000;
+}
+
+#input-field:hover {
+  box-shadow: 0px 0px 10px 0px rgba(167, 166, 166, 0.322);
+}
+
+#input-field:focus {
+  outline: none;
+}
+
+.stats-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.stats-content {
+  background: linear-gradient(to right, #4b274b 0%, #2f1930 70%);
+  padding: 30px;
+  border-radius: 10px;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.stats-content h2 {
+  color: #f1e3e3;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--thirdly);
+}
+
+.stat-label {
+  font-size: 1rem;
+  color: #666;
+}
+
+#restart-btn {
+  padding: 10px 20px;
+  background-color: var(--thirdly);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+#restart-btn:hover {
+  background-color: #8b448d6c;
+}
+
+#show-stats {
+  position: relative;
+  padding: 10px 30px;
+  background-color: #c226f1;
+  color: #000;
+  border: 1px solid transparent;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 365px;
+}
+
+#show-stats:hover {
+  position: relative;
+  padding: 10px 30px;
+  background-color: transparent;
+  color: #f1e3e3;
+  border: 1px solid #f1e3e3;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 365px;
+}
+
+.show-stats:focus {
+  background-color: transparent;
+}
+
+.time {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#timer {
+  color: rgb(230, 66, 74);
+}
+
+#results {
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.footer-content{
+  background-color: white;
+  padding: 50px;
+}
+.footer-content h2{
+  text-align: center;
+}
+.footer-content p{
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+
+/*----------------------ici, pour le responsive de la page About----------------------*/
+@media (max-width: 768px) {
+  .about-container {
+      flex-direction: column;
+  }
+  
+  .about-image {
+      height: 300px;
+  }
+  
+  .about-content {
+      padding: 30px;
+  }
+}
+/* ============================================ Footer Styles ============================================= */
+.contact-page {
+  background-color: var(--accent-3);
+  color: #f1e3e3;
+  padding: 40px 0 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-left: 200px;
+  padding-top: 40px;
+}
+
+.footer-section {
+  flex: 3;
+  margin-bottom: 30px;
+  padding: 0 15px;
+  justify-content: space-between;
+}
+
+.footer-section h3 {
+  color: var(--thirdly);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-section h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 2px;
+  background-color: var(--thirdly);
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+  color: var(--accent-1);
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.footer-section ul li:hover {
+  color: var(--thirdly);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 30px;
+}
+
+.link-icon {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+}
+
+.link-icon i {
+   font-size: 30px;
+}
+
+
+.footer-bottom p {
+  margin: 5px 0;
+  font-size: 0.8rem;
+  color: var(--accent-1);
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+  .footer-section {
+      min-width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section {
+      min-width: 100%;
+  }
+}
+
+/*------------------------------------------------------------------------------------*/
