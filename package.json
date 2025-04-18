@@ -1,0 +1,16 @@
+{
+  "name": "TurboTyping-website-template",
+  "version": "1.0.0",
+  "description": "A barebones typing website for you to complete. ",
+  "main": "typingTest.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "typing",
+    "game",
+    "speedtyping"
+  ],
+  "author": "HEI Madagascar : STD24028 ANDRIAMANGA Lucas Andrianina & STD24135 ANDRIAMANJATO Antsaniaina Tantely",
+  "license": "ISC"
+}
